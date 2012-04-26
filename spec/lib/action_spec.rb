@@ -18,11 +18,16 @@ module RubyQuest
 
     context "when going to a location" do
 
-      it "goes to this location if it's available"
+      let(:forest) { double('location', :name => 'forest')}
+
+      it "changes the location to new one" do
+        actor.go forest
+        actor.location.should eq forest
+      end
 
       it "informs that the location has been reached" do
         Output.should_receive(:action).with('You have reached the forest')
-        actor.go 'forest'
+        actor.go forest
       end
 
       it "informs that this location isn't available"
