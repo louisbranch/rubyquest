@@ -7,11 +7,6 @@ module RubyQuest
     include Action
   end
 
-  class Output
-    def self.action msg
-    end
-  end
-  
   describe Action do
 
     let(:actor) { Dummy.new }
@@ -32,7 +27,9 @@ module RubyQuest
         end
 
         it "informs that the location has been reached" do
-          Output.should_receive(:action).with('You have reached the forest')
+          output = double('output')
+          actor.stub(:output).and_return(output)
+          output.should_receive(:action).with('You have reached the forest')
           actor.go forest
         end
 
@@ -49,7 +46,9 @@ module RubyQuest
         end
 
         it "informs that this location is unavailable" do
-          Output.should_receive(:action).with("You don't have forest on your map. Type 'map' to see the available locations")
+          output = double('output')
+          actor.stub(:output).and_return(output)
+          output.should_receive(:action).with("You don't have forest on your map. Type 'map' to see the available locations")
           actor.go forest
         end
 
