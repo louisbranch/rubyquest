@@ -14,10 +14,6 @@ module RubyQuest
 
     private
 
-    def on_map?(location)
-      {:available => ['forest'] }.include?(location)      
-    end
-
     def output
       Output.new      
     end
