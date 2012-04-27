@@ -2,12 +2,10 @@ module RubyQuest
 
   module Action
     require 'output'
-
-    attr_accessor :location
+    require 'map'
 
     def go location
-      if on_map?(location)
-        self.location = location
+      if map.travel(location)
         output.action "You have reached the #{location.name}"      
       else
         output.action "You don't have #{location.name} on your map. Type 'map' to see the available locations"
@@ -22,6 +20,10 @@ module RubyQuest
 
     def output
       Output.new      
+    end
+
+    def map
+      Map.new
     end
 
   end
