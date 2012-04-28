@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
     "README.md",
     "bin/ruby_quest",
     "lib/ruby_quest.rb",
-    "lib/ruby_quest/game.rb",
+    "lib/ruby_quest/console.rb",
     "ruby_quest.gemspec"
   ]
   s.require_paths = ["lib"]

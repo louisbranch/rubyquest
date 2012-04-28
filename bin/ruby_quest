@@ -3,4 +3,4 @@
 require 'ruby_quest'
 require File.expand_path('../../lib/ruby_quest', __FILE__)
 
-RubyQuest::Game.new
+RubyQuest::Console.new
