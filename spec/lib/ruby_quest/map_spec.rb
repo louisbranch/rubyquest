@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'map'
+require 'ruby_quest/map'
 
 module RubyQuest
 

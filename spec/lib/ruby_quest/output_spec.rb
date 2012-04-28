@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'output'
+require 'ruby_quest/output'
 
 module RubyQuest
 

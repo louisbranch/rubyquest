@@ -3,7 +3,7 @@ module RubyQuest
   class Map
 
     def now
-      @location || 'limbo'
+      @location ||= 'limbo'
     end
 
     def travel(location)

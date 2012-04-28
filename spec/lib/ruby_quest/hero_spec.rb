@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'action'
-require 'hero'
+require 'ruby_quest/action'
+require 'ruby_quest/hero'
 
 module RubyQuest
 

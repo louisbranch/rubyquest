@@ -1,8 +1,8 @@
 module RubyQuest
 
   module Action
-    require 'output'
-    require 'map'
+    require 'ruby_quest/output'
+    require 'ruby_quest/map'
 
     def go location
       if map.travel(location)
@@ -15,11 +15,11 @@ module RubyQuest
     private
 
     def output
-      Output.new      
+      @output ||= Output.new      
     end
 
     def map
-      Map.new
+      @map ||= Map.new
     end
 
   end

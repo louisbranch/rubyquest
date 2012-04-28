@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'action'
+require 'ruby_quest/action'
 
 module RubyQuest
 
