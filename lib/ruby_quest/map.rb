@@ -3,45 +3,49 @@ module RubyQuest
   class Map
     require 'ruby_quest/output'
 
-    attr_reader :output, :list
+    attr_reader :output, :current
 
     def initialize(output = Output.new)
       @output = output
     end
 
-    def current
-      @location ||= 'limbo'
-    end
-
-    def travel location
-      if current == location
-        message = "You already are in forest"
-      elsif on_map? location
-        self.current = location 
-        message = "You have reached the forest"
+    def travel place
+      if current == place
+        message = "You already are in #{place.name}"
+      elsif on_map? place
+        self.current = place 
+        message = "You have reached the #{place.name}"
       else
-        message = "Forest is not on your map. Type 'map' to list all avaiable locations"
+        message = "#{place.name.capitalize} is not on your map. Type 'map' to list all avaiable places"
       end
       output.action message
     end
 
     def list
-      @list ||= []
+      message = ""
+      places.each_with_index do |place, i|
+        message << "#{i + 1}. #{place.name}"
+      end
+      output.action message
+    end
+
+    def add place
+      places.push place
     end
 
     private
 
-    def current= location
-      @location = location
+    def current= place
+      @current = place
     end
 
-    # In the future need to be a tree
-    def add location
-      @list << location
+    # In the future needs to be a tree
+    def places
+      @places ||= []
     end
 
-    def on_map? location
-      list.include? location
+    def on_map? place
+      places.include? place
     end
 
   end
