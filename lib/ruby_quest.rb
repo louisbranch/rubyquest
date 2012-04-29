@@ -1,4 +1,4 @@
-require 'ruby_quest/console'
+require 'ruby_quest/cli'
 
 module RubyQuest
   DIR   = File.expand_path("~/.ruby_quest")

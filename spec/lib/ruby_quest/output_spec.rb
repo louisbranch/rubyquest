@@ -5,10 +5,16 @@ module RubyQuest
 
   describe Output do
 
-    it "prints a message to the user" do
-      output = Output.new
-      output.should_receive(:p).with('I want to play a game with you!')
-      output.action('I want to play a game with you!')
+    let(:output) { Output.new }
+
+    it "prints a announcement from the game" do
+      output.should_receive(:puts).with('** Let the game begin! **')
+      output.announce('Let the game begin!')
+    end
+
+    it "prints the result of an action" do
+      output.should_receive(:puts).with('I want to play a game with you!')
+      output.react('I want to play a game with you!')
     end
 
   end

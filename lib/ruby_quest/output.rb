@@ -1,8 +1,12 @@
 module RubyQuest
   class Output
 
-    def action(message)
-      p message
+    def announce(message)
+      puts "** #{message} **" 
+    end
+
+    def react(message)
+      puts message
     end
 
   end
