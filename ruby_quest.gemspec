@@ -14,6 +14,9 @@ Gem::Specification.new do |s|
     "lib/ruby_quest.rb",
     "lib/ruby_quest/cli.rb",
     "lib/ruby_quest/output.rb",
+    "lib/ruby_quest/command.rb",
+    "lib/ruby_quest/map.rb",
+    "lib/ruby_quest/hero.rb",
     "ruby_quest.gemspec"
   ]
   s.require_paths = ["lib"]
