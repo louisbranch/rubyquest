@@ -3,31 +3,37 @@ module RubyQuest
   class CLI
     require 'readline'
     require 'ruby_quest/output'
+    require 'ruby_quest/command'
+    require 'ruby_quest/hero'
 
-    attr_reader :output
+    attr_reader :input, :output, :hero
 
-    def initialize(output = ::RubyQuest::Output.new)
-      @output = output
-      greetings
+    def initialize(input = ::Readline, output = ::RubyQuest::Output.new)
+      @input, @output = input, output
     end
 
     def start!
+      greetings
       # Leave the game without a Ruby exception upon interruption
       trap(:INT) { puts; exit }
-
-      loop do
-        input = ::Readline.readline(prompt)
-        # Include input text on history, accessible by up-arrow key
-        Readline::HISTORY.push(input)
-        puts "You typed: #{input}"
-        break if input == 'exit'
-      end
+      name = input.readline(prompt)
+      @hero = Hero.new(name) 
+      console
     end
 
     private
 
+    def console
+      loop do
+        command = input.readline(prompt)
+        Readline::HISTORY.push(command)
+        Command.new command, hero
+        break if command == 'exit'
+      end
+    end
+
     def greetings
-      @output.announce "Welcome to RubyQuest!"
+      @output.announce "Greeting stranger, welcome to RubyQuest! May I have your name?"
     end
     
     def prompt

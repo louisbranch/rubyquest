@@ -5,7 +5,7 @@ module RubyQuest
       puts "** #{message} **" 
     end
 
-    def react(message)
+    def action(message)
       puts message
     end
 

@@ -14,7 +14,7 @@ module RubyQuest
 
     it "prints the result of an action" do
       output.should_receive(:puts).with('I want to play a game with you!')
-      output.react('I want to play a game with you!')
+      output.action('I want to play a game with you!')
     end
 
   end
