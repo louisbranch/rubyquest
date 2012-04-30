@@ -2,9 +2,12 @@ module RubyQuest
 
   class Command
 
-    # Dummy implementation
     def initialize(string, hero)
-      go string, hero.map
+      case string
+      when /^go to (\D*)$/
+        $1
+        go $1, hero.map
+      end
     end
 
     private

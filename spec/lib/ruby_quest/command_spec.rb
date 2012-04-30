@@ -9,7 +9,7 @@ module RubyQuest
       map = double('map')
       hero = double('hero', :map => map )
       map.should_receive(:travel).with('forest')
-      command = Command.new 'forest', hero
+      command = Command.new 'go to forest', hero
     end
 
   end
