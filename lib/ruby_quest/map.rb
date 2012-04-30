@@ -10,15 +10,10 @@ module RubyQuest
     end
 
     def travel place
-      if current == place
-        message = "You already are in #{place.name}"
-      elsif on_map? place
-        self.current = place 
-        message = "You have reached the #{place.name}"
-      else
-        message = "#{place.name.capitalize} is not on your map. Type 'map' to list all avaiable places"
-      end
-      output.action message
+      #if Place.find(place)
+      self.current = place
+      #else
+      #output.error "#{place} is not a valid place. Type 'map' to list all available places"
     end
 
     def list
@@ -36,7 +31,15 @@ module RubyQuest
     private
 
     def current= place
-      @current = place
+      if current == place
+        message = "You already are in #{place.name}"
+      elsif on_map? place
+        @current = place 
+        message = "You have reached the #{place.name}"
+      else
+        message = "#{place.name.capitalize} is not on your map. Type 'map' to list all available places"
+      end
+      output.action message
     end
 
     # In the future needs to be a tree
