@@ -16,12 +16,31 @@ module RubyQuest
       greetings
       # Leave the game without a Ruby exception upon interruption
       trap(:INT) { puts; exit }
-      name = input.readline(prompt)
-      @hero = Hero.new(name) 
+      set_user
       console
     end
 
     private
+
+    def greetings
+      @output.announce "Greeting stranger, welcome to RubyQuest! May I have your name?"
+    end
+    
+    def prompt
+      "RubyQuest ~> "
+    end
+
+    def set_user
+      until hero do
+        name = input.readline(prompt)
+        break if name == 'exit'
+        if ( @hero = Hero.new(name) )
+          output.announce "Nice to meet you #{@hero.name}"
+        else
+          output.announce "C'mon give me your name!"
+        end
+      end
+    end
 
     def console
       loop do
@@ -30,14 +49,6 @@ module RubyQuest
         Command.new command, hero
         break if command == 'exit'
       end
-    end
-
-    def greetings
-      @output.announce "Greeting stranger, welcome to RubyQuest! May I have your name?"
-    end
-    
-    def prompt
-      "RubyQuest ~> "
     end
 
   end
