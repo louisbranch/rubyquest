@@ -12,7 +12,7 @@ module Rubyquest
         @output = double.as_null_object
         @cli = CLI.new @input, @output
         hero = double('hero', :name => 'Tas')
-        Hero.stub(:new).and_return(false, hero) # Runs the loop twice 
+        Hero.stub(:find).and_return(false, hero) # Runs the loop twice 
         @cli.stub(:console)
       end
 
@@ -29,7 +29,7 @@ module Rubyquest
       context "when an Hero name is provided" do
         it "creates a Hero" do
           @input.stub(:readline).and_return('Caramon')
-          Hero.should_receive(:new).with('Caramon')
+          Hero.should_receive(:find).with('Caramon')
           @cli.start!
         end
 
