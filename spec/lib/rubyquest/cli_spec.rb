@@ -34,7 +34,7 @@ module Rubyquest
         end
 
         it "greetings the Hero" do
-          @output.should_receive(:announce).with("Nice to meet you Tas")
+          @output.should_receive(:announce).with("Nice to meet you Tas. Type 'help' to see the available commands.")
           @cli.start!
         end
       end

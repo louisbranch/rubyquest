@@ -34,7 +34,7 @@ module Rubyquest
       until hero do
         name = input.readline(prompt)
         if ( @hero = Hero.find(name) )
-          output.announce "Nice to meet you #{hero.name}"
+          output.announce "Nice to meet you #{hero.name}. Type 'help' to see the available commands."
         else
           output.announce "C'mon give me your name!"
         end
