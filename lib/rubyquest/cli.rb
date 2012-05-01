@@ -1,14 +1,14 @@
-module RubyQuest
+module Rubyquest
 
   class CLI
     require 'readline'
-    require 'ruby_quest/output'
-    require 'ruby_quest/command'
-    require 'ruby_quest/hero'
+    require 'rubyquest/output'
+    require 'rubyquest/command'
+    require 'rubyquest/hero'
 
     attr_reader :input, :output, :hero
 
-    def initialize(input = ::Readline, output = ::RubyQuest::Output.new)
+    def initialize(input = ::Readline, output = ::Rubyquest::Output.new)
       @input, @output = input, output
     end
 
@@ -23,11 +23,11 @@ module RubyQuest
     private
 
     def greetings
-      @output.announce "Greeting stranger, welcome to RubyQuest! May I have your name?"
+      @output.announce "Greeting stranger, welcome to Rubyquest! May I have your name?"
     end
     
     def prompt
-      "RubyQuest ~> "
+      "Rubyquest ~> "
     end
 
     def set_user

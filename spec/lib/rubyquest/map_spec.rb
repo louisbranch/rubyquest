@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'ruby_quest/map'
+require 'rubyquest/map'
 
-module RubyQuest
+module Rubyquest
 
   describe Map do
 

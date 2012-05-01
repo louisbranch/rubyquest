@@ -1,7 +1,7 @@
-require 'ruby_quest/cli'
+require 'rubyquest/cli'
 
-module RubyQuest
-  DIR   = File.expand_path("~/.ruby_quest")
+module Rubyquest
+  DIR   = File.expand_path("~/.rubyquest")
   
   class << self
     def initialize!

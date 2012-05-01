@@ -1,7 +1,7 @@
-module RubyQuest
+module Rubyquest
 
   class Hero
-    require 'ruby_quest/map'
+    require 'rubyquest/map'
 
     attr_reader :name, :level, :map
 

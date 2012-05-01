@@ -1,4 +1,4 @@
-module RubyQuest
+module Rubyquest
   class Output
 
     def announce(message)

@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'ruby_quest/output'
+require 'rubyquest/output'
 
-module RubyQuest
+module Rubyquest
 
   describe Output do
 

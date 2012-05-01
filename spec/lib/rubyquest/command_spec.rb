@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'ruby_quest/command'
+require 'rubyquest/command'
 
-module RubyQuest
+module Rubyquest
 
   describe Command do
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'ruby_quest/cli'
+require 'rubyquest/cli'
 
-module RubyQuest
+module Rubyquest
 
   describe CLI do
 
@@ -17,12 +17,12 @@ module RubyQuest
       end
 
       it "shows a greeting message" do
-        @output.should_receive(:announce).with("Greeting stranger, welcome to RubyQuest! May I have your name?")
+        @output.should_receive(:announce).with("Greeting stranger, welcome to Rubyquest! May I have your name?")
         @cli.start!
       end
 
       it "shows a prompt message for choosing a hero and for giving commands" do
-        @input.should_receive(:readline).with("RubyQuest ~> ").twice
+        @input.should_receive(:readline).with("Rubyquest ~> ").twice
         @cli.start!
       end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'ruby_quest/hero'
+require 'rubyquest/hero'
 
-module RubyQuest
+module Rubyquest
 
   describe Hero do
 

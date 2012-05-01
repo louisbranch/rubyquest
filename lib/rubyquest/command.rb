@@ -1,4 +1,4 @@
-module RubyQuest
+module Rubyquest
 
   class Command
 

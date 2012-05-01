@@ -1,7 +1,7 @@
-module RubyQuest
+module Rubyquest
 
   class Map
-    require 'ruby_quest/output'
+    require 'rubyquest/output'
 
     attr_reader :output, :current
 
