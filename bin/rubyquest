@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'ruby_quest'
-require File.expand_path('../../lib/ruby_quest', __FILE__)
+require 'rubyquest'
+require File.expand_path('../../lib/rubyquest', __FILE__)
 
-cli = RubyQuest::CLI.new
+cli = Rubyquest::CLI.new
 cli.start!

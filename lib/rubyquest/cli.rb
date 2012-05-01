@@ -33,13 +33,16 @@ module Rubyquest
     def set_user
       until hero do
         name = input.readline(prompt)
-        break if name == 'exit'
         if ( @hero = Hero.new(name) )
-          output.announce "Nice to meet you #{@hero.name}"
+          output.announce "Nice to meet you #{hero.name}"
         else
           output.announce "C'mon give me your name!"
         end
       end
+    end
+
+    def hero
+      @hero
     end
 
     def console
