@@ -19,6 +19,8 @@ module Rubyquest
       when /^go to (\D*)$/
         $1
         go $1, hero.map
+      when /^exit$/
+        nil
       else
         invalid(string)
       end

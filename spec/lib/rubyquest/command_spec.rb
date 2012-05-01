@@ -17,6 +17,11 @@ module Rubyquest
       Command.new 'help', nil, output
     end
 
+    it "ignores exit commands" do
+      output.should_not_receive(:action)
+      Command.new 'exit', nil, output
+    end
+
     it "goes to a place" do
       map = double('map')
       hero = double('hero', :map => map )
