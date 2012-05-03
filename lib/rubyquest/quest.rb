@@ -9,7 +9,7 @@ module Rubyquest
       parse yaml
     end
 
-    def self.load path
+    def self.load path = './quests'
       files = Dir.glob( path + '/*.yml')
       files.each do |file|
         quest = YAML.load_file file

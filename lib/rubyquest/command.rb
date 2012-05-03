@@ -2,6 +2,7 @@ module Rubyquest
 
   class Command
     require 'rubyquest/output'
+    require 'rubyquest/quest'
 
     attr_reader :output
 
@@ -16,11 +17,13 @@ module Rubyquest
       case string
       when /^help$/
         help
+      when /^exit$/
+        nil
+      when /^quests$/
+        Quest.load
       when /^go to (\D*)$/
         $1
         go $1, hero.map
-      when /^exit$/
-        nil
       else
         invalid(string)
       end

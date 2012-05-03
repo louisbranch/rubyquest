@@ -12,7 +12,7 @@ module Rubyquest
       Command.new 'foobar', nil, output
     end
 
-    it "shows all the available commands" do
+    it "shows all commands" do
       output.should_receive(:action).with('Commands: go to <place>, help, exit')
       Command.new 'help', nil, output
     end
@@ -20,6 +20,11 @@ module Rubyquest
     it "ignores exit commands" do
       output.should_not_receive(:action)
       Command.new 'exit', nil, output
+    end
+
+    it "shows all quests" do
+      Quest.should_receive(:load)
+      Command.new 'quests', nil
     end
 
     it "goes to a place" do

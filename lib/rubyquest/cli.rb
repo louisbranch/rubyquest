@@ -41,10 +41,6 @@ module Rubyquest
       end
     end
 
-    def hero
-      @hero
-    end
-
     def console
       loop do
         command = input.readline(prompt)
