@@ -8,8 +8,8 @@ module Rubyquest
     context "when starting a game" do
 
       before do
-        @input = double.as_null_object
         @output = double.as_null_object
+        @input = double.as_null_object
         @cli = CLI.new @input, @output
         hero = double('hero', :name => 'Tas')
         Hero.stub(:find).and_return(false, hero) # Runs the loop twice 
@@ -17,7 +17,7 @@ module Rubyquest
       end
 
       it "shows a greeting message" do
-        @output.should_receive(:announce).with("Greeting stranger, welcome to Rubyquest! May I have your name?")
+        @output.should_receive(:message).with("Greeting stranger, welcome to Rubyquest! May I have your name?", :announce)
         @cli.start!
       end
 
@@ -34,14 +34,14 @@ module Rubyquest
         end
 
         it "greetings the Hero" do
-          @output.should_receive(:announce).with("Nice to meet you Tas. Type 'help' to see the available commands.")
+          @output.should_receive(:message).with("Nice to meet you Tas. Type 'help' to see the available commands.", :announce)
           @cli.start!
         end
       end
 
       context "when an empty Hero name is passed" do
         it "complains about a empty Hero name" do
-          @output.should_receive(:announce).with("C'mon give me your name!")
+          @output.should_receive(:message).with("C'mon give me your name!", :announce)
           @cli.start!
         end
       end
@@ -50,8 +50,8 @@ module Rubyquest
     context "when receives commands" do
 
       before do
-        @input = double.as_null_object
         @output = double.as_null_object
+        @input = double.as_null_object
         Command.stub(:new)
         @cli = CLI.new @input, @output
         @cli.stub(:set_user)

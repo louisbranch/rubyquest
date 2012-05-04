@@ -12,8 +12,7 @@ module Rubyquest
                 'exit'
                ]
 
-    def initialize(string, hero, output = Output.new)
-      @output = output
+    def initialize string, hero = nil
       case string
       when /^help$/
         help
@@ -25,19 +24,19 @@ module Rubyquest
         $1
         go $1, hero.map
       else
-        invalid(string)
+        invalid string
       end
     end
 
     private
 
-    def invalid(command)
-      output.action "'#{command}' is not a valid command. Type 'help' to see all available commands."
+    def invalid command
+      Output.message "'#{command}' is not a valid command. Type 'help' to see all available commands."
     end
 
     def help
       commands = "Commands: " << COMMANDS.join(', ')
-      output.action commands
+      Output.message commands
     end
 
     def go location, map

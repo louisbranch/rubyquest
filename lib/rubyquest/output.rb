@@ -1,12 +1,20 @@
 module Rubyquest
   class Output
 
-    def announce(message)
-      puts "** #{message} **" 
+    def self.message text, type = :action
+      output = new
+      message = output.instance_eval "#{type}('#{text}')"
+      puts message
     end
 
-    def action(message)
-      puts message
+    private
+
+    def announce text
+      "** #{text} **" 
+    end
+
+    def action text
+      text
     end
 
   end

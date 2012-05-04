@@ -8,7 +8,7 @@ module Rubyquest
 
     attr_reader :input, :output, :hero
 
-    def initialize(input = ::Readline, output = ::Rubyquest::Output.new)
+    def initialize input = ::Readline, output = Output
       @input, @output = input, output
     end
 
@@ -23,7 +23,7 @@ module Rubyquest
     private
 
     def greetings
-      @output.announce "Greeting stranger, welcome to Rubyquest! May I have your name?"
+      output.message "Greeting stranger, welcome to Rubyquest! May I have your name?", :announce
     end
     
     def prompt
@@ -34,9 +34,9 @@ module Rubyquest
       until hero do
         name = input.readline(prompt)
         if ( @hero = Hero.find(name) )
-          output.announce "Nice to meet you #{hero.name}. Type 'help' to see the available commands."
+          output.message "Nice to meet you #{hero.name}. Type 'help' to see the available commands.", :announce
         else
-          output.announce "C'mon give me your name!"
+          output.message "C'mon give me your name!", :announce
         end
       end
     end
