@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
     'lib/rubyquest/hero.rb',
     'lib/rubyquest/map.rb',
     'lib/rubyquest/output.rb',
+    'lib/rubyquest/quest.rb',
     'rubyquest.gemspec'
   ]
   s.require_paths = ['lib']
