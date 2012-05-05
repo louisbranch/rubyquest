@@ -11,7 +11,7 @@ module Rubyquest
     end
 
     it "shows all commands" do
-      Output.should_receive(:display).with('Commands: go to <place>, help, exit')
+      Output.should_receive(:display).with('Commands: help, exit')
       Command.new 'help'
     end
 

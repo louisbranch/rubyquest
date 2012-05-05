@@ -7,7 +7,6 @@ module Rubyquest
     attr_reader :output
 
     COMMANDS = [
-                'go to <place>',
                 'help',
                 'exit'
                ]
@@ -21,7 +20,6 @@ module Rubyquest
       when /^quests$/
         Quest.load
       when /^go to (\D*)$/
-        $1
         go $1, hero.map
       else
         invalid string
