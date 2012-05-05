@@ -7,6 +7,7 @@ module Rubyquest
     it "play an entire game" do
       CLI.new.start! do
         t 'help'
+        t 'create hero Erevis'
         exit
       end
     end
