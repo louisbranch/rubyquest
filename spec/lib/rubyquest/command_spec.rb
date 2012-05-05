@@ -25,6 +25,11 @@ module Rubyquest
       Command.new 'quests'
     end
 
+    it "creates a hero" do
+      Hero.should_receive(:find).with('Caramon')
+      Command.new 'create hero Caramon'
+    end
+
     it "goes to a place" do
       map = double('map')
       hero = double('hero', :map => map )
