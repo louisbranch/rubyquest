@@ -13,14 +13,10 @@ module Rubyquest
 
     def initialize string, hero = nil
       case string
-      when /^help$/
-        help
-      when /^exit$/
-        nil
-      when /^quests$/
-        Quest.load
-      when /^go to (\D*)$/
-        go $1, hero.map
+      when /^help$/               then help
+      when /^exit$/               then nil
+      when /^quests$/             then Quest.load
+      when /^go to (\D*)$/        then go $1, hero.map
       else
         invalid string
       end
