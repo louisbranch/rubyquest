@@ -7,7 +7,6 @@ module Rubyquest
 
     before do
       Readline.stub(:readline).and_return('help', 'exit') # Runs the loop twice
-      Command.stub(:new) # Hide annoying put messages
     end
 
     let(:cli) { CLI.new }
