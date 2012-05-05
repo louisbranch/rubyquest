@@ -3,22 +3,37 @@ module Rubyquest
   class Hero
     require 'rubyquest/map'
 
-    attr_reader :name, :level, :map
+    attr_reader :name
 
-    def initialize name
-      @name = name
-      @level = 1
-      @map = Map.new
+    def initialize options
+      options.each do |k,v|
+        instance_variable_set("@#{k}", v) unless v.nil?
+      end
     end
 
-    # Latter it will find the user from some place
-    def self.find(name)
-      name.strip!
-      if !name.empty?
-        new(name)
-      else
-        nil
+    def level
+      @level ||= 1
+    end
+
+    class << self
+
+      attr_reader :heroes
+
+      def find(name)
+        hero_attr = heroes.select { |h| h[:name] == name}
+        hero = if hero_attr.any?
+                new(hero_attr.first)
+              else
+                new({name: name})
+              end
       end
+
+      private
+
+      def heroes
+        @heroes = YAML.load_file('./.data/heroes.yml')
+      end
+
     end
 
   end

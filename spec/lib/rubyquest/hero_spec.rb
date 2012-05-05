@@ -5,21 +5,30 @@ module Rubyquest
 
   describe Hero do
 
-    let(:hero) { Hero.new 'Raistlin'}
+    context "when finding a hero" do
 
-    it "finds a hero through his name" do
-      hero = Hero.find('Taz')
-      hero.name.should eq('Taz')
-    end
+      before do
+        Hero.stub(:heroes).and_return([{name: 'Araevin'}])
+      end
 
-    it "doesn't find a hero with blank name" do
-      hero = Hero.find('  ')
-      hero.should be_nil
+      it "loads an existing hero" do
+        hero = Hero.find('Araevin')
+        hero.name.should eq 'Araevin'
+      end
+
+      it "creates a new hero" do
+        hero = Hero.find('Taz')
+        hero.name.should eq('Taz')
+      end
+
     end
 
     it "starts on level 1" do
+      hero = Hero.new({name: 'Raistlin'})
       hero.level.should eq(1)
     end
+
+    it "shows all heroes"
 
   end
 end
