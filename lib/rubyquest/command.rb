@@ -31,12 +31,12 @@ module Rubyquest
     private
 
     def invalid command
-      Output.message "'#{command}' is not a valid command. Type 'help' to see all available commands."
+      Output.display "'#{command}' is not a valid command. Type 'help' to see all available commands."
     end
 
     def help
       commands = "Commands: " << COMMANDS.join(', ')
-      Output.message commands
+      Output.display commands
     end
 
     def go location, map

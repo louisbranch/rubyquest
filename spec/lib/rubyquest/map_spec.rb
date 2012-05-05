@@ -5,13 +5,12 @@ module Rubyquest
 
   describe Map do
 
-    let(:output) { double.as_null_object } # Ignored unexpected messages
-    let(:map) { Map.new(output) }
+    let(:map) { Map.new }
     let(:forest) { double('forest', :name => 'forest')}
 
     it "shows a list of places" do
       map.add forest
-      output.should_receive(:action).with('1. forest')
+      Output.should_receive(:display).with('1. forest')
       map.list
     end
 
@@ -26,7 +25,7 @@ module Rubyquest
 
       it "informs that the places are the same" do
         map.stub(:current).and_return(forest)
-        output.should_receive(:action).with("You already are in forest")
+        Output.should_receive(:display).with("You already are in forest")
         map.travel forest
       end
 
@@ -39,7 +38,7 @@ module Rubyquest
 
         it "informs that the place has been reached" do
           map.stub(:on_map?).and_return(true)
-          output.should_receive(:action).with("You have reached the forest")
+          Output.should_receive(:display).with("You have reached the forest")
           map.travel forest
         end
 
@@ -52,7 +51,7 @@ module Rubyquest
         end
 
         it "informs that the place is not on the map" do
-          output.should_receive(:action).with("Forest is not on your map. Type 'map' to list all available places")
+          Output.should_receive(:display).with("Forest is not on your map. Type 'map' to list all available places")
           map.travel forest
         end
       end

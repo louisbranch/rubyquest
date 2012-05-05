@@ -1,20 +1,24 @@
 module Rubyquest
   class Output
 
-    def self.message text, type = :action
-      output = new
-      message = output.instance_eval "#{type}(\"#{text}\")"
-      puts message
+    attr_reader :message, :type
+
+    def self.display message, type = :action
+      text = new(message, type).format
+      puts text
     end
 
-    private
-
-    def announce text
-      "** #{text} **" 
+    def initialize message, type
+      @message, @type = message, type
     end
 
-    def action text
-      text
+    def format
+      case type
+      when :action
+        message
+      when :announce
+        "** #{message} **"
+      end
     end
 
   end

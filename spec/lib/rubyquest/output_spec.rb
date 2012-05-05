@@ -7,12 +7,12 @@ module Rubyquest
 
     it "prints a announcement from the game" do
       Output.should_receive(:puts).with('** Let the game begin! **')
-      Output.message('Let the game begin!', :announce)
+      Output.display('Let the game begin!', :announce)
     end
 
     it "prints the result of an action" do
       Output.should_receive(:puts).with('Let the game begin!')
-      Output.message('Let the game begin!')
+      Output.display('Let the game begin!')
     end
 
   end

@@ -6,17 +6,17 @@ module Rubyquest
   describe Command do
 
     it "reports invalid commands" do
-      Output.should_receive(:message).with("'foobar' is not a valid command. Type 'help' to see all available commands.")
+      Output.should_receive(:display).with("'foobar' is not a valid command. Type 'help' to see all available commands.")
       Command.new 'foobar'
     end
 
     it "shows all commands" do
-      Output.should_receive(:message).with('Commands: go to <place>, help, exit')
+      Output.should_receive(:display).with('Commands: go to <place>, help, exit')
       Command.new 'help'
     end
 
     it "ignores exit commands" do
-      Output.should_not_receive(:message)
+      Output.should_not_receive(:display)
       Command.new 'exit'
     end
 

@@ -3,11 +3,7 @@ module Rubyquest
   class Map
     require 'rubyquest/output'
 
-    attr_reader :output, :current
-
-    def initialize(output = Output.new)
-      @output = output
-    end
+    attr_reader :current
 
     def travel place
       #if Place.find(place)
@@ -21,7 +17,7 @@ module Rubyquest
       places.each_with_index do |place, i|
         message << "#{i + 1}. #{place.name}"
       end
-      output.action message
+      Output.display message
     end
 
     def add place
@@ -39,7 +35,7 @@ module Rubyquest
       else
         message = "#{place.name.capitalize} is not on your map. Type 'map' to list all available places"
       end
-      output.action message
+      Output.display message
     end
 
     # In the future needs to be a tree

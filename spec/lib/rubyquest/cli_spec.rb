@@ -8,16 +8,15 @@ module Rubyquest
     context "when starting a game" do
 
       before do
-        @output = double.as_null_object
         @input = double.as_null_object
-        @cli = CLI.new @input, @output
+        @cli = CLI.new @input
         hero = double('hero', :name => 'Tas')
         Hero.stub(:find).and_return(false, hero) # Runs the loop twice 
         @cli.stub(:console)
       end
 
       it "shows a greeting message" do
-        @output.should_receive(:message).with("Greeting stranger, welcome to Rubyquest! May I have your name?", :announce)
+        Output.should_receive(:display).with("Greeting stranger, welcome to Rubyquest! May I have your name?", :announce)
         @cli.start!
       end
 
@@ -34,14 +33,14 @@ module Rubyquest
         end
 
         it "greetings the Hero" do
-          @output.should_receive(:message).with("Nice to meet you Tas. Type 'help' to see the available commands.", :announce)
+          Output.should_receive(:display).with("Nice to meet you Tas. Type 'help' to see the available commands.", :announce)
           @cli.start!
         end
       end
 
       context "when an empty Hero name is passed" do
         it "complains about a empty Hero name" do
-          @output.should_receive(:message).with("C'mon give me your name!", :announce)
+          Output.should_receive(:display).with("C'mon give me your name!", :announce)
           @cli.start!
         end
       end
@@ -50,10 +49,9 @@ module Rubyquest
     context "when receives commands" do
 
       before do
-        @output = double.as_null_object
         @input = double.as_null_object
         Command.stub(:new)
-        @cli = CLI.new @input, @output
+        @cli = CLI.new @input
         @cli.stub(:set_user)
         @input.stub(:readline).and_return('go to castle', 'exit') # Runs the loop twice
       end
