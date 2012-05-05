@@ -68,7 +68,7 @@ module Rubyquest
         Readline::HISTORY.should include 'go to castle'
       end
 
-      it "invoks the command" do
+      it "invokes the command" do
         hero = double('hero')
         @cli.stub(:hero).and_return(hero)
         @input.stub(:readline).and_return('go to castle', 'exit')

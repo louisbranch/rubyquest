@@ -15,7 +15,7 @@ module Rubyquest
       map.list
     end
 
-    context "when travelling to a place" do
+    context "when traveling to a place" do
 
       it "checks if the place exists"
 
