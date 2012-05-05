@@ -5,75 +5,26 @@ module Rubyquest
 
   describe CLI do
 
-    context "when starting a game" do
-
-      before do
-        @input = double.as_null_object
-        @cli = CLI.new @input
-        hero = double('hero', :name => 'Tas')
-        Hero.stub(:find).and_return(false, hero) # Runs the loop twice 
-        @cli.stub(:console)
-      end
-
-      it "shows a greeting message" do
-        Output.should_receive(:display).with("Greeting stranger, welcome to Rubyquest! May I have your name?", :announce)
-        @cli.start!
-      end
-
-      it "shows a prompt message for choosing a hero and for giving commands" do
-        @input.should_receive(:readline).with("Rubyquest ~> ").twice
-        @cli.start!
-      end
-
-      context "when an Hero name is provided" do
-        it "creates a Hero" do
-          @input.stub(:readline).and_return('Caramon')
-          Hero.should_receive(:find).with('Caramon')
-          @cli.start!
-        end
-
-        it "greetings the Hero" do
-          Output.should_receive(:display).with("Nice to meet you Tas. Type 'help' to see the available commands.", :announce)
-          @cli.start!
-        end
-      end
-
-      context "when an empty Hero name is passed" do
-        it "complains about a empty Hero name" do
-          Output.should_receive(:display).with("C'mon give me your name!", :announce)
-          @cli.start!
-        end
-      end
+    before do
+      Readline.stub(:readline).and_return('help', 'exit') # Runs the loop twice
+      Command.stub(:new) # Hide annoying put messages
     end
 
-    context "when receives commands" do
+    let(:cli) { CLI.new }
 
-      before do
-        @input = double.as_null_object
-        Command.stub(:new)
-        @cli = CLI.new @input
-        @cli.stub(:set_user)
-        @input.stub(:readline).and_return('go to castle', 'exit') # Runs the loop twice
-      end
+    it "shows a prompt message" do
+      Readline.should_receive(:readline).with("Rubyquest ~> ")
+      cli.start!
+    end
 
-      it "loads the console" do
-        @cli.should_receive(:console)
-        @cli.start!
-      end
+    it "saves a command on the history" do
+      cli.start!
+      Readline::HISTORY.should include 'help'
+    end
 
-      it "saves the command on the history" do
-        @cli.start!
-        Readline::HISTORY.should include 'go to castle'
-      end
-
-      it "invokes the command" do
-        hero = double('hero')
-        @cli.stub(:hero).and_return(hero)
-        @input.stub(:readline).and_return('go to castle', 'exit')
-        Command.should_receive(:new).with('go to castle', hero)
-        @cli.start!
-      end
-
+    it "invokes a command" do
+      Command.should_receive(:new).with('help')
+      cli.start!
     end
 
   end
