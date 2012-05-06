@@ -4,4 +4,4 @@ require 'rubyquest'
 require File.expand_path('../../lib/rubyquest', __FILE__)
 
 cli = Rubyquest::CLI.new
-cli.start!
+cli.start

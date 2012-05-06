@@ -2,9 +2,11 @@ module Rubyquest
 
   class CLI
     require 'readline'
+    require 'rubyquest/output'
     require 'rubyquest/command'
 
-    def start!
+    def start
+      Output.display("Welcome to Rubyquest! Type 'help' to see the available commands.")
       # Leave the game without a Ruby exception upon interruption
       trap(:INT) { puts; exit }
       loop do
