@@ -5,6 +5,7 @@ module Rubyquest
   describe Rubyquest do
 
     it "play an entire game" do
+      Command.any_instance.should_receive(:invalid).never # Raise error on invalid commands
       CLI.new.start! do
         t 'help'
         t 'new hero Erevis'
@@ -14,8 +15,8 @@ module Rubyquest
 
     private
 
-    def t command
-      Command.new command
+    def t(command)
+      Command.new(command)
     end
 
     def exit
