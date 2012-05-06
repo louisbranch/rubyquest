@@ -23,23 +23,23 @@ module Rubyquest
       def load(name)
         result = find(name)
         hero = if result.any?
-                Output.display("You are now playing as #{name}")
-                new(result.first)
-              else
-                Output.display("#{name} doesn't exist. Type 'heroes' to list all heroes or 'new hero #{name}' to create a new one.")
-                nil
-              end
+                 Output.display("You are now playing as #{name}")
+                 new(result.first)
+               else
+                 Output.display("#{name} doesn't exist. Type 'heroes' to list all heroes or 'new hero #{name}' to create a new one.")
+                 nil
+               end
       end
 
       def create(name)
         result = find(name)
         hero = if result.empty?
-                Output.display("You are now playing as #{name}")
-                new({name: name})
-              else
-                Output.display("#{name} already exist. Type 'hero #{name}' to play with him.")
-                nil
-              end
+                 Output.display("You are now playing as #{name}")
+                 new({name: name})
+               else
+                 Output.display("#{name} already exist. Type 'hero #{name}' to play with him.")
+                 nil
+               end
       end
 
       private
@@ -51,6 +51,12 @@ module Rubyquest
       def heroes
         @heroes = YAML.load_file('./.data/heroes.yml')
       end
+
+      # def save(hero)
+      #   File.open('./.data/heroes.yml', 'w+') do |f|
+      #     f.write(YAML.dump(hero))
+      #   end
+      # end
 
     end
 
