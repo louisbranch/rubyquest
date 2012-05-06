@@ -11,6 +11,7 @@ module Rubyquest
     end
 
     it "shows all commands" do
+      Command.any_instance.stub(:list).and_return(['help', 'exit'])
       Output.should_receive(:display).with('Commands: help, exit')
       Command.new 'help'
     end
@@ -25,9 +26,14 @@ module Rubyquest
       Command.new 'quests'
     end
 
+    it "loads a hero" do
+      Hero.should_receive(:load).with('Caramon')
+      Command.new 'hero Caramon'
+    end
+
     it "creates a hero" do
-      Hero.should_receive(:find).with('Caramon')
-      Command.new 'create hero Caramon'
+      Hero.should_receive(:create).with('Caramon')
+      Command.new 'new hero Caramon'
     end
 
     it "goes to a place" do
