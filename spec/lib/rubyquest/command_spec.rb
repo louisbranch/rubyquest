@@ -22,7 +22,7 @@ module Rubyquest
     end
 
     it "shows all quests" do
-      Quest.should_receive(:load)
+      Quest.should_receive(:list)
       Command.new 'quests'
     end
 

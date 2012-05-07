@@ -3,17 +3,20 @@ require 'rubyquest/quest'
 
 module Rubyquest
 
+  Quest::QUESTS_PATH = './spec/fixtures/quests/*.yml'
+
   describe Quest do
 
-    it "loads all quests available" do
-      path = './spec/fixtures/quests'
-      Quest.should_receive(:new).twice
-      Quest.load path
+    it "list all quests available" do
+      Output.should_receive(:display).twice
+      Quest.list
     end
+
+    it "loads a quest"
     
     it "creates new quest from a YAML file" do
-      yaml = YAML.load_file('./spec/fixtures/quests/baldurs_gate.yml')
-      quest = Quest.new yaml
+      options = YAML.load_file('./spec/fixtures/quests/baldurs_gate.yml')
+      quest = Quest.new(options)
       quest.name.should eq "Baldur's Gate II"
     end
 

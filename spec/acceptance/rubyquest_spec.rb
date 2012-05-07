@@ -8,6 +8,7 @@ module Rubyquest
       Command.any_instance.should_receive(:invalid).never # Raise error on invalid commands
       CLI.new.start do
         t 'help'
+        t 'quests'
         t 'new hero Erevis'
         exit
       end

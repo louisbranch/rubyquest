@@ -11,7 +11,7 @@ module Rubyquest
       case string
       when /^help$/               then help
       when /^exit$/               then nil
-      when /^quests$/             then Quest.load
+      when /^quests$/             then Quest.list
       when /^hero (.*)$/          then Hero.load($1)
       when /^new hero (.*)$/      then Hero.create($1)
       when /^go to (\D*)$/        then go $1, hero.map
