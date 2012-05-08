@@ -7,9 +7,7 @@ module Rubyquest
 
   describe Hero do
 
-    context "setting a hero" do
-
-      context "when finding" do
+    context "when finding" do
 
       it "loads this hero" do
         hero = Hero.load('Araevin')
@@ -26,9 +24,9 @@ module Rubyquest
         Hero.load('Taz')
       end
 
-      end
+    end
 
-      context "when creating" do
+    context "when creating" do
 
       it "creates a new hero" do
         hero = Hero.create('Taz')
@@ -45,8 +43,6 @@ module Rubyquest
       it "displays that this hero already exist" do
         Output.should_receive(:display).with("Araevin already exist. Type 'hero Araevin' to play with him.")
         Hero.create('Araevin')
-      end
-
       end
 
     end

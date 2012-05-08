@@ -51,7 +51,7 @@ module Rubyquest
       end
 
       def heroes
-        @heroes = YAML.load_file(HEROES_FILE)
+        @heroes = YAML.load_file(HEROES_FILE) || []
       end
 
       # def save(hero)
