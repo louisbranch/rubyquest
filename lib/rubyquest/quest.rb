@@ -20,7 +20,7 @@ module Rubyquest
 
       def list
         quests.each_with_index do |quest, i|
-          Output.display("#{i+1}. #{quest[:name]}")
+          Output.display("#{i+1}. #{quest['name']}")
         end
       end
 
