@@ -12,6 +12,7 @@ module Rubyquest
       when /^help$/               then help
       when /^exit$/               then nil
       when /^quests$/             then Quest.list
+      when /^heroes$/             then Hero.list
       when /^hero (.*)$/          then Hero.load($1)
       when /^new hero (.*)$/      then Hero.create($1)
       when /^go to (\D*)$/        then go $1, hero.map
@@ -23,6 +24,7 @@ module Rubyquest
     
     def list
       [
+        'heroes',
         'hero <name>',
         'new hero <name>',
         'quests',

@@ -52,7 +52,10 @@ module Rubyquest
       hero.level.should eq(1)
     end
 
-    it "shows all heroes"
+    it "shows all heroes" do
+      Output.should_receive(:display).with("1. Araevin")
+      Hero.list
+    end
 
   end
 end

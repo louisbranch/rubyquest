@@ -26,6 +26,11 @@ module Rubyquest
       Command.new 'quests'
     end
 
+    it "shows all heroes" do
+      Hero.should_receive(:list)
+      Command.new 'heroes'
+    end
+
     it "loads a hero" do
       Hero.should_receive(:load).with('Caramon')
       Command.new 'hero Caramon'

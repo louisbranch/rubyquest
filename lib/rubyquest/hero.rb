@@ -22,6 +22,12 @@ module Rubyquest
 
       attr_reader :heroes
 
+      def list
+        heroes.each_with_index do |hero, i|
+          Output.display("#{i+1}. #{hero['name']}")
+        end
+      end
+
       def load(name)
         result = find(name)
         hero = if result.any?
