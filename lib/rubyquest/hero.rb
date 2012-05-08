@@ -4,6 +4,8 @@ module Rubyquest
     require 'rubyquest/map'
     require 'rubyquest/output'
 
+    HEROES_FILE = '.data/heroes.yml'
+
     attr_reader :name
 
     def initialize(options = {})
@@ -45,15 +47,15 @@ module Rubyquest
       private
 
       def find(name)
-        heroes.select { |h| h[:name] == name}
+        heroes.select { |h| h['name'] == name}
       end
 
       def heroes
-        @heroes = YAML.load_file('./.data/heroes.yml')
+        @heroes = YAML.load_file(HEROES_FILE)
       end
 
       # def save(hero)
-      #   File.open('./.data/heroes.yml', 'w+') do |f|
+      #   File.open(HEROES_FILE, 'w+') do |f|
       #     f.write(YAML.dump(hero))
       #   end
       # end

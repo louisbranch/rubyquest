@@ -3,13 +3,11 @@ require 'rubyquest/hero'
 
 module Rubyquest
 
+  Hero::HEROES_FILE = './spec/fixtures/data/heroes.yml'
+
   describe Hero do
 
     context "setting a hero" do
-
-      before do
-        Hero.stub(:heroes).and_return([{name: 'Araevin'}])
-      end
 
       context "when finding" do
 
