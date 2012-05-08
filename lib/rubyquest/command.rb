@@ -25,6 +25,7 @@ module Rubyquest
       [
         'hero <name>',
         'new hero <name>',
+        'quests',
         'help',
         'exit'
       ]
