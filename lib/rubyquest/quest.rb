@@ -6,7 +6,7 @@ module Rubyquest
 
     QUESTS_PATH = './quests/*.yml'
 
-    attr_reader :name
+    attr_reader :name, :introduction
 
     def initialize(options = {})
       options.each do |k,v|
@@ -16,11 +16,22 @@ module Rubyquest
 
     class << self
 
-      attr_reader :quests
+      attr_reader :quests, :current
 
       def list
         quests.each_with_index do |quest, i|
           Output.display("#{i+1}. #{quest['name']}")
+        end
+      end
+
+      def join(id)
+        position = (id.to_i - 1)
+        if quests[position]
+          @current = new(quests[position])
+          Output.display(current.introduction)
+        else
+          @current = nil
+          Output.display("#{id} is an invalid id. Type 'quest' to list all quests and 'join quest <id>' to join it.")
         end
       end
 

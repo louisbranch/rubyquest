@@ -12,6 +12,7 @@ module Rubyquest
       when /^help$/               then help
       when /^exit$/               then nil
       when /^quests$/             then Quest.list
+      when /^join quest (.*)$/     then Quest.join($1)
       when /^heroes$/             then Hero.list
       when /^hero (.*)$/          then Hero.load($1)
       when /^new hero (.*)$/      then Hero.create($1)
@@ -28,6 +29,7 @@ module Rubyquest
         'hero <name>',
         'new hero <name>',
         'quests',
+        'join quest <id>',
         'help',
         'exit'
       ]

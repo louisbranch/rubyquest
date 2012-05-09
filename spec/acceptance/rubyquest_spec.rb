@@ -9,6 +9,7 @@ module Rubyquest
       CLI.new.start do
         t 'help'
         t 'quests'
+        t 'join quest 1'
         t 'heroes'
         t 'new hero Erevis'
         exit

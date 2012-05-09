@@ -26,6 +26,11 @@ module Rubyquest
       Command.new 'quests'
     end
 
+    it "joins a quest" do
+      Quest.should_receive(:join).with('1')
+      Command.new 'join quest 1'
+    end
+
     it "shows all heroes" do
       Hero.should_receive(:list)
       Command.new 'heroes'
