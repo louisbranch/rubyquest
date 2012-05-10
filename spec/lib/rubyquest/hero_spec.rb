@@ -11,7 +11,7 @@ module Rubyquest
 
       it "loads this hero" do
         hero = Hero.load('Araevin')
-        hero.should be_instance_of Hero
+        Hero.current_hero.should eq(hero)
       end
 
       it "displays that this hero was loaded" do
@@ -30,7 +30,7 @@ module Rubyquest
 
       it "creates a new hero" do
         hero = Hero.create('Taz')
-        hero.should be_instance_of Hero
+        Hero.current_hero.should eq(hero)
       end
 
       it "saves this new hero"

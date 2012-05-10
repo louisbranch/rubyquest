@@ -16,7 +16,7 @@ module Rubyquest
 
     class << self
 
-      attr_reader :quests, :current
+      attr_reader :quests, :current_quest
 
       def list
         quests.each_with_index do |quest, i|
@@ -24,13 +24,17 @@ module Rubyquest
         end
       end
 
-      def join(id)
+      def join(id, hero)
+        unless hero
+          Output.display("You need to select a hero first. Type 'heroes' to list all heroes available or 'new hero <name>' to create a new one")
+          return nil
+        end
         position = (id.to_i - 1)
         if quests[position]
-          @current = new(quests[position])
-          Output.display(current.introduction)
+          @current_quest = new(quests[position])
+          Output.display(current_quest.introduction)
         else
-          @current = nil
+          @current_quest = nil
           Output.display("#{id} is an invalid id. Type 'quest' to list all quests and 'join quest <id>' to join it.")
         end
       end

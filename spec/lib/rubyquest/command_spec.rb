@@ -27,7 +27,9 @@ module Rubyquest
     end
 
     it "joins a quest" do
-      Quest.should_receive(:join).with('1')
+      hero = double("hero")
+      Hero.stub(:current_hero).and_return(hero)
+      Quest.should_receive(:join).with('1', hero)
       Command.new 'join quest 1'
     end
 

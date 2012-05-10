@@ -20,7 +20,7 @@ module Rubyquest
 
     class << self
 
-      attr_reader :heroes
+      attr_reader :heroes, :current_hero
 
       def list
         heroes.each_with_index do |hero, i|
@@ -30,7 +30,7 @@ module Rubyquest
 
       def load(name)
         result = find(name)
-        hero = if result.any?
+        @current_hero = if result.any?
                  Output.display("You are now playing as #{name}")
                  new(result.first)
                else
@@ -41,7 +41,7 @@ module Rubyquest
 
       def create(name)
         result = find(name)
-        hero = if result.empty?
+        @current_hero = if result.empty?
                  Output.display("You are now playing as #{name}")
                  new({name: name})
                else
