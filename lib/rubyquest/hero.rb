@@ -3,6 +3,10 @@ module Rubyquest
   class Hero
     require 'rubyquest/map'
     require 'rubyquest/output'
+    require 'rubyquest/store'
+
+    include Store
+    storage :heroes
 
     HEROES_FILE = '.data/heroes.yml'
 
@@ -43,7 +47,8 @@ module Rubyquest
         result = find(name)
         @current_hero = if result.empty?
                  Output.display("You are now playing as #{name}")
-                 new({name: name})
+                 hero = new({name: name})
+                 hero.save
                else
                  Output.display("#{name} already exist. Type 'hero #{name}' to play with him.")
                  nil
@@ -59,12 +64,6 @@ module Rubyquest
       def heroes
         @heroes = YAML.load_file(HEROES_FILE) || []
       end
-
-      # def save(hero)
-      #   File.open(HEROES_FILE, 'w+') do |f|
-      #     f.write(YAML.dump(hero))
-      #   end
-      # end
 
     end
 

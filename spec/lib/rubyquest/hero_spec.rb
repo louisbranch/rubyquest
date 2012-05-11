@@ -33,10 +33,13 @@ module Rubyquest
         Hero.current_hero.should eq(hero)
       end
 
-      it "saves this new hero"
-
       it "displays that this new hero was created" do
         Output.should_receive(:display).with("You are now playing as Taz")
+        Hero.create('Taz')
+      end
+
+      it "saves this hero" do
+        Hero.any_instance.should_receive(:save)
         Hero.create('Taz')
       end
 
