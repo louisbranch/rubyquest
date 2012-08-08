@@ -1,7 +1,6 @@
 module Rubyquest
 
   class Hero
-    require 'rubyquest/map'
     require 'rubyquest/output'
     require 'rubyquest/store'
 
